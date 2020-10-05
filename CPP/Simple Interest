@@ -1,0 +1,23 @@
+//C++ program for calculating simple interest
+
+#include<conio.h>
+#include<iostream.h>
+   void main()
+    { clrscr();
+      int p,n;
+      float r,si;
+
+       cout<<"Enter Principle amount";
+       cin>>p;
+       cout<<"Enter n ";
+       cin>>n;
+       cout<<"Enter rate";
+       cin>>r;
+
+       /* formula for simple interest*/
+
+	si=p*n*r/100;
+
+	cout<<"Simple Interest is "<<si;
+	getch();
+     }
