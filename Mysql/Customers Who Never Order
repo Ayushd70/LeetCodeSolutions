@@ -1,0 +1,1 @@
+select Customers.Name 'Customers' from Customers left join Orders ON Customers.Id = Orders.CustomerId WHERE Orders.CustomerId is NULL 
