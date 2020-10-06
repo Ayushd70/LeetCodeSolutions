@@ -1,0 +1,9 @@
+SELECT Request_at as Day,
+COALESCE(ROUND(SUM(CASE WHEN status LIKE 'cancelled%' THEN TRUE END )/COUNT(*),2),0)
+AS 'Cancellation Rate'
+FROM trips t
+WHERE Request_at >= '2013-10-01' and Request_at <= '2013-10-03'
+AND Client_Id IN(SELECT users_id FROM users WHERE banned = 'No')
+AND Driver_Id IN(SELECT users_id FROM users WHERE banned = 'No')
+GROUP BY Request_at
+ORDER BY Day;
