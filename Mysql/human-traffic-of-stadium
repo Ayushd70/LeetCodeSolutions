@@ -1,0 +1,22 @@
+WITH stadium_data AS
+(
+    SELECT s.id,
+    s.visit_date,
+    s.id - ROW_NUMBER() OVER(ORDER BY s.id ASC) AS id_group,
+    s.people
+    FROM stadium s
+    WHERE s.people >= 100
+)
+
+
+SELECT s.id,
+s.visit_date,
+s.people
+FROM stadium_data s
+WHERE s.id_group IN
+(
+    SELECT s.id_group
+    FROM stadium_data s
+    GROUP BY s.id_group
+    HAVING COUNT(s.id) >= 3
+);
