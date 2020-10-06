@@ -1,0 +1,8 @@
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN 
+declare off int;
+set off = N - 1;
+  RETURN (
+      select (select distinct Salary from Employee order by Salary desc limit 1 offset off)
+  );
+END
