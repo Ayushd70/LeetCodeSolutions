@@ -18,8 +18,8 @@ class Solution(object):
                         result[node] = smallest_person
             return result[node]
 
-        graph = [[] for _ in xrange(len(quiet))]
+        graph = [[] for _ in range(len(quiet))]
         for u, v in richer:
             graph[v].append(u)
         result = [None]*len(quiet)
-        return map(lambda x: dfs(graph, quiet, x, result), xrange(len(quiet)))
+        return map(lambda x: dfs(graph, quiet, x, result), range(len(quiet)))
