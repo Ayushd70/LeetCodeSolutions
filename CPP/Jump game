@@ -1,0 +1,22 @@
+class Solution {
+public:
+    
+    bool giveAns(vector<int> &nums,int start,vector<int> &dp,vector<bool> &ans){
+        if(start>=nums.size()) return false;
+        if(dp[start]!=-1) return ans[start];
+        dp[start]=1;
+        if(start==nums.size()-1) return ans[start]=true;
+        if(nums[start]==0) return ans[start]=false;
+        for(int i=1;i<=nums[start];i++){
+            if((start+i)>=nums.size()) return ans[start]=false;
+            if(giveAns(nums,start+i,dp,ans)==true) return ans[start]=true;
+        }
+        return ans[start]=false;
+    }
+    
+    bool canJump(vector<int>& nums) {
+        vector<int> dp(nums.size(),-1);
+        vector<bool> ans(nums.size());
+        return giveAns(nums,0,dp,ans);
+    }
+};
