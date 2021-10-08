@@ -1,0 +1,11 @@
+#https://leetcode.com/problems/unique-email-addresses/
+
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        valid = set()
+        for email in emails:
+            local , domain = email.split('@')
+            local = local.split('+')[0].replace('.','')
+            mail = local+'@'+domain
+            valid.add(mail)
+        return len(valid)
