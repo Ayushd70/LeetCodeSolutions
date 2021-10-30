@@ -1,34 +1,13 @@
-/**
- * A rectangle is represented as a list [x1, y1, x2,
- * y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the
- * coordinates of its top-right corner.
- *
- * <p>Two rectangles overlap if the area of their intersection is positive. To be clear, two
- * rectangles that only touch at the corner or edges do not overlap.
- *
- * <p>Given two (axis-aligned) rectangles, return whether they overlap.
- *
- * <p>Example 1:
- *
- * <p>Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3] Output: true Example 2:
- *
- * <p>Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1] Output: false Notes:
- *
- * <p>Both rectangles rec1 and rec2 are lists of 4 integers. All coordinates in rectangles will be
- * between -10^9 and 10^9.
- */
-public class RectangleOverlap {
+class Solution {
     public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
-        // check if either rectangle is actually a line
-        if (rec1[0] == rec1[2] || rec1[1] == rec1[3] ||
-            rec2[0] == rec2[2] || rec2[1] == rec2[3]) {
-            // the line cannot have positive overlap
-            return false;
-        }
-
-        return !(rec1[2] <= rec2[0] ||   // left
-                 rec1[3] <= rec2[1] ||   // bottom
-                 rec1[0] >= rec2[2] ||   // right
-                 rec1[1] >= rec2[3]);    // top
+        return (
+            overlap(rec1[0], rec1[2], rec2[0], rec2[2]) &&
+            overlap(rec1[1], rec1[3], rec2[1], rec2[3])
+        );
+    }
+    
+    public boolean overlap(int ax1, int ax2, int bx1, int bx2) {
+        if (ax2 <= bx1 || bx2 <= ax1) return false;
+            return true;
     }
 }
