@@ -1,5 +1,3 @@
-package math;
-
 /**
  * A rectangle is represented as a list [x1, y1, x2,
  * y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the
@@ -20,17 +18,17 @@ package math;
  * between -10^9 and 10^9.
  */
 public class RectangleOverlap {
-  public static void main(String[] args) {
-    int[] A = {0, 0, 2, 2};
-    int[] B = {1, 1, 3, 3};
-    System.out.println(new RectangleOverlap().isRectangleOverlap(A, B));
-  }
+    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+        // check if either rectangle is actually a line
+        if (rec1[0] == rec1[2] || rec1[1] == rec1[3] ||
+            rec2[0] == rec2[2] || rec2[1] == rec2[3]) {
+            // the line cannot have positive overlap
+            return false;
+        }
 
-  public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
-    boolean x =
-        ((rec1[0] >= rec2[0] && rec1[0] < rec2[2]) || (rec2[0] >= rec1[0] && rec2[0] < rec1[2]));
-    boolean y =
-        ((rec1[1] >= rec2[1] && rec1[1] < rec2[3]) || (rec2[1] >= rec1[1] && rec2[1] < rec1[3]));
-    return x && y;
-  }
+        return !(rec1[2] <= rec2[0] ||   // left
+                 rec1[3] <= rec2[1] ||   // bottom
+                 rec1[0] >= rec2[2] ||   // right
+                 rec1[1] >= rec2[3]);    // top
+    }
 }
