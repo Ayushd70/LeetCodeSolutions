@@ -6,7 +6,7 @@ class TreeNode(object):
         self.right = right
 
 #Binary Search Tree(BST) Inorder Traversal
- 
+
 
 class Solution(object):
     def inorderTraversal(self, root):
