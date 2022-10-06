@@ -24,7 +24,7 @@ public:
            int res = 0; 
   
      for (int i = 0; i < str.length(); i++) { 
-  int s1 = value(str[i]); 
+        int s1 = value(str[i]); 
   
         if (i + 1 < str.length()) { 
             int s2 = value(str[i + 1]); 
