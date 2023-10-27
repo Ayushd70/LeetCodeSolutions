@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/peak-index-in-a-mountain-array/
+
 public class peakIndexInAMountainArray {
 
   static int peakIndexInMountainArray(int[] arr) {
@@ -17,7 +18,7 @@ public class peakIndexInAMountainArray {
   }
 
   public static void main(String[] args) {
-    int[] arr = {-2,0, 1,2,1, 0,-2};
+    int[] arr = {-3,-2,0, 1,2,1, 0,-2,-3};
     System.out.println(peakIndexInMountainArray(arr));
   }
 }
