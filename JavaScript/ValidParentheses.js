@@ -1,18 +1,14 @@
-var isValid = function (inputString) {
-    let expectedBrackets = [];
+var isValid = function (s) {
+  const stack = [];
+  const pairs = { ')': '(', '}': '{', ']': '[' };
 
-    for (let letter = 0; letter < inputString.length; letter++) {
-        if (inputString[letter] == '{') {
-            expectedBrackets.push('}');
-        } else if (inputString[letter] == '[') {
-            expectedBrackets.push(']');
-        } else if (inputString[letter] == '(') {
-            expectedBrackets.push(')');
-        }
-        else if (expectedBrackets.pop() !== inputString[letter]) {
-            return false;
-        }
+  for (const ch of s) {
+    if (ch in pairs) {
+      if (stack.pop() !== pairs[ch]) return false;
+    } else {
+      stack.push(ch);
     }
+  }
 
-    return !expectedBrackets.length;
+  return stack.length === 0;
 };
