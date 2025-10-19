@@ -1,15 +1,12 @@
-var isPalindrome = function(x) {
-    // Base condition
-    if (x < 0) {
-        return false;
-    }
-    // Store the number in a variable
-    let number = x;
-    // This will store the reverse of the number
-    let reverse = 0;
-    while (number > 0) {
-        reverse = reverse * 10 + number % 10;
-        number = parseInt(number / 10);
-    }
-    return x === reverse;
+var isPalindrome = function (x) {
+  if (x < 0 || (x % 10 === 0 && x !== 0)) return false;
+
+  let reversedHalf = 0;
+  while (x > reversedHalf) {
+    reversedHalf = reversedHalf * 10 + (x % 10);
+    x = Math.floor(x / 10);
+  }
+
+  // Works for both even and odd length numbers
+  return x === reversedHalf || x === Math.floor(reversedHalf / 10);
 };
